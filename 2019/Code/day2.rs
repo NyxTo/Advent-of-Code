@@ -8,9 +8,9 @@ fn main() {
 		let mut code = ints.clone();
 		code[1] = noun; code[2] = verb;
 		for pos in (0 .. code.len()).step_by(4) {
-			let at = code[pos + 3];
+			let at = code[pos + 3] as usize;
 			let (val1, val2) = (code[code[pos + 1] as usize], code[code[pos + 2] as usize]);
-			code[at as usize] = match code[pos] {
+			code[at] = match code[pos] {
 				99 => break,
 				1  => val1 + val2,
 				2  => val1 * val2,
