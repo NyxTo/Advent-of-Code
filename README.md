@@ -1,4 +1,4 @@
-# Advent-of-Code
+# Advent of Code
 
 This is just a record of my progress and solutions for the [Advent of Code](https://adventofcode.com/) puzzles. From the [About](https://adventofcode.com/about) page:
 
