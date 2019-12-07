@@ -42,7 +42,7 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 				pos += 4;
 			},
 			_ => panic!("fail"),
-		};
+		}
 	}
 	return diagnostic;
 }
