@@ -49,7 +49,7 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 
 fn main() {
 	let input = read_to_string("in5.txt").unwrap().trim_end().to_string();
-	let code = input.split(",").map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>();
+	let code = input.split(',').map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>();
 	println!("Part A: {}", program(code.clone(), 1));
 	println!("Part B: {}", program(code.clone(), 5));
 }
