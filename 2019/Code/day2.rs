@@ -13,7 +13,7 @@ fn main() {
 				99 => break,
 				1  => val1 + val2,
 				2  => val1 * val2,
-				_  => return panic!("fail"),
+				_  => panic!("fail"),
 			}
 		}
 		if noun == 12 && verb == 2 { println!("Part A: {}", code[0]); }
