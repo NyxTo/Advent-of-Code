@@ -2,7 +2,7 @@ use std::fs::read_to_string;
 
 fn main() {
 	let input = read_to_string("in2.txt").unwrap().trim_end().to_string();
-	let ints = input.split(",").map(|int| int.parse::<u32>().unwrap()).collect::<Vec<_>>();
+	let ints = input.split(',').map(|int| int.parse::<u32>().unwrap()).collect::<Vec<_>>();
 	for noun in 0..100 {
 	for verb in 0..100 {
 		let mut code = ints.clone();
