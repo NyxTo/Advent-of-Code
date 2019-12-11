@@ -5,13 +5,17 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 	loop {
 		let op = code[pos];
 		if op == 99 { break; }
-		let mode = |pow10, val| if op / pow10 % 10 == 0 { code[val as usize] } else { val };
-		let (mut val1, mut val2, at) = (code[pos + 1], code[pos + 2], code[pos + 3] as usize);
+		let mode = |pow10, val| match op / pow10 % 10 {
+			0 => code[val as usize],
+			1 => val,
+			_ => panic!("fail"),
+		};
+		let (mut val1, mut val2, val3) = (code[pos + 1], code[pos + 2], code[pos + 3]);
 		match op % 100 {
 			1 | 2 => {
 				val1 = mode(100, val1);
 				val2 = mode(1000, val2);
-				code[at] = if op % 100 == 1 { val1 + val2 } else { val1 * val2 };
+				code[val3 as usize] = if op % 100 == 1 { val1 + val2 } else { val1 * val2 };
 				pos += 4;
 			},
 			3 => {
@@ -34,11 +38,11 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 				else { pos += 3; }
 			},
 			7 => {
-				code[at] = if mode(100, val1) < mode(1000, val2) { 1 } else { 0 };
+				code[val3 as usize] = if mode(100, val1) < mode(1000, val2) { 1 } else { 0 };
 				pos += 4;
 			},
 			8 => {
-				code[at] = if mode(100, val1) == mode(1000, val2) { 1 } else { 0 };
+				code[val3 as usize] = if mode(100, val1) == mode(1000, val2) { 1 } else { 0 };
 				pos += 4;
 			},
 			_ => panic!("fail"),
