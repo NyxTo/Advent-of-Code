@@ -10,14 +10,16 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 			1 => val,
 			_ => panic!("fail"),
 		};
-		let (mut val1, mut val2, val3) = (code[pos + 1], code[pos + 2], code[pos + 3]);
+		let (mut val1, val2, val3) = (code[pos + 1], code[pos + 2], code[pos + 3]);
 		match op % 100 {
-			1 | 2 => {
-				val1 = mode(100, val1);
-				val2 = mode(1000, val2);
-				code[val3 as usize] = if op % 100 == 1 { val1 + val2 } else { val1 * val2 };
+			1 => {
+				code[val3 as usize] = mode(100, val1) + mode(1000, val2);
 				pos += 4;
 			},
+			2 => {
+				code[val3 as usize] = mode(100, val1) * mode(1000, val2);
+				pos += 4;
+			}
 			3 => {
 				if has_in { panic!("fail"); }
 				code[val1 as usize] = id;
@@ -33,8 +35,12 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 				}
 				pos += 2;
 			},
-			5 | 6 => {
-				if (op % 100 == 5) ^ (mode(100, val1) == 0) { pos = mode(1000, val2) as usize; }
+			5 => {
+				if mode(100, val1) != 0 { pos = mode(1000, val2) as usize; }
+				else { pos += 3; }
+			},
+			6 => {
+				if mode(100, val1) == 0 { pos = mode(1000, val2) as usize; }
 				else { pos += 3; }
 			},
 			7 => {
