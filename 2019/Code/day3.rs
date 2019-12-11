@@ -1,28 +1,25 @@
 use std::fs::read_to_string;
 use std::cmp::{min, max};
 
+fn create(path: &str) -> (Vec<i32>, Vec<i32>) {
+	let (mut coord, mut steps) = (vec![0, 0], vec![0]);
+	for segment in path.split(',') {
+		let amt = segment.split_at(1).1.parse::<i32>().unwrap();
+		coord.push(coord[coord.len() - 2] + match segment.chars().next().unwrap() {
+			'U' | 'R' => amt,
+			'D' | 'L' => -amt,
+			_ => panic!("fail"),
+		});
+		steps.push(steps[steps.len() - 1] + amt);
+	}
+	(coord, steps)
+}
+
 fn main() {
 	let input = read_to_string("in3.txt").unwrap().trim_end().to_string();
 	let sep = input.find('\n').unwrap();
-	let (mut coord1, mut coord2, mut steps1, mut steps2) = (vec![0, 0], vec![0, 0], vec![0], vec![0]);
-	for segment in (&input[..sep]).split(',') {
-		let amt = segment.split_at(1).1.parse::<i32>().unwrap();
-		coord1.push(coord1[coord1.len() - 2] + match segment.chars().next().unwrap() {
-			'U' | 'R' => amt,
-			'D' | 'L' => -amt,
-			_ => panic!("fail"),
-		});
-		steps1.push(steps1[steps1.len() - 1] + amt);
-	}
-	for segment in (&input[sep+1 ..]).split(',') {
-		let amt = segment.split_at(1).1.parse::<i32>().unwrap();
-		coord2.push(coord2[coord2.len() - 2] + match segment.chars().next().unwrap() {
-			'U' | 'R' => amt,
-			'D' | 'L' => -amt,
-			_ => panic!("fail"),
-		});
-		steps2.push(steps2[steps2.len() - 1] + amt);
-	}
+	let (coord1, steps1) = create(&input[..sep]);
+	let (coord2, steps2) = create(&input[sep+1 ..]);
 	let (mut min_dist, mut min_steps) = (300000, 300000);
 	for i in 2 .. coord1.len() {
 	for j in 2 .. coord2.len() {
