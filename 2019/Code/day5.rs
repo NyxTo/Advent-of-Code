@@ -10,7 +10,7 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 			1 => val,
 			_ => panic!("fail"),
 		};
-		let (mut val1, val2, val3) = (code[pos + 1], code[pos + 2], code[pos + 3]);
+		let (val1, val2, val3) = (code[pos + 1], code[pos + 2], code[pos + 3]);
 		match op % 100 {
 			1 => {
 				code[val3 as usize] = mode(100, val1) + mode(1000, val2);
@@ -28,9 +28,9 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 			},
 			4 => {
 				if has_out { panic!("fail"); }
-				val1 = mode(100, val1);
-				if val1 != 0 {
-					diagnostic = val1;
+				let oput = mode(100, val1);
+				if oput != 0 {
+					diagnostic = oput;
 					has_out = true;
 				}
 				pos += 2;
