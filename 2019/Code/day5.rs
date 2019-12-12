@@ -19,7 +19,7 @@ fn program(mut code: Vec<i32>, id: i32) -> i32 {
 			2 => {
 				code[val3 as usize] = mode(100, val1) * mode(1000, val2);
 				pos += 4;
-			}
+			},
 			3 => {
 				if has_in { panic!("fail"); }
 				code[val1 as usize] = id;
