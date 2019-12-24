@@ -1,6 +1,7 @@
 fn main() {
 	let (mut count_a, mut count_b) = (0, 0);
-	'search: for pswd in 206938..=679128 {
+	'search:
+	for pswd in 206938..=679128 {
 		let (mut num, mut prev_dig, mut run, mut has_grp, mut has_pair) = (pswd, 10, 0, false, false);
 		let mut next_dig;
 		while num > 0 {
