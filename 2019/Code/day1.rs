@@ -1,9 +1,9 @@
 use std::fs::read_to_string;
 
 fn main() {
-	let puzzle = read_to_string("in1.txt").unwrap();
+	let input = read_to_string("in1.txt").unwrap();
 	let (mut sum_a, mut sum_b) = (0, 0);
-	for line in puzzle.lines() {
+	for line in input.lines() {
 		let mass = line.parse::<i32>().unwrap();
 		let mut fuel = mass / 3 - 2;
 		sum_a += fuel;
