@@ -21,7 +21,7 @@ fn main() {
 					prog[store] = read(&prog, pos + 1) * read(&prog, pos + 2);
 				},
 				99 => break,
-				_ => panic!("ab{}cd{}ef{}gh{}ij", noun, verb, pos, prog[pos]),
+				_ => panic!("unknown opcode"),
 			};
 			pos += 4;
 		}
