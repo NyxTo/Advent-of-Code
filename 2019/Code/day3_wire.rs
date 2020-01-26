@@ -17,7 +17,7 @@ fn path(wire: Vec<(char, i32)>) -> (Vec<i32>, Vec<i32>) {
 
 fn main() {
 	let mut input = BufReader::new(File::open("in3.txt").unwrap()).lines().map(|line| line.unwrap().split(',').map(|segment| (segment.chars().next().unwrap(), segment[1..].parse::<i32>().unwrap())).collect::<Vec<_>>());
-	let ((coords1, steps1), (coords2, steps2), mut min_dist, mut min_steps) = (path(input.next().unwrap()), path(input.next().unwrap()), 90000000, 90000000);
+	let ((coords1, steps1), (coords2, steps2), mut min_dist, mut min_steps) = (path(input.next().unwrap()), path(input.next().unwrap()), 300_000, 300_000);
 	for i in 0 .. coords1.len() - 2 {
 	for j in 0 .. coords2.len() - 2 {
 		let (ci0, ci1, ci2, cj0, cj1, cj2) = (coords1[i], coords1[i + 1], coords1[i + 2], coords2[j], coords2[j + 1], coords2[j + 2]);
