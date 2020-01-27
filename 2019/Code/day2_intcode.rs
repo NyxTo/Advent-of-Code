@@ -1,9 +1,5 @@
 use std::fs::read_to_string;
 
-fn read(prog: &Vec<i32>, pos: usize) -> i32 {
-	return prog[prog[pos] as usize];
-}
-
 fn main() {
 	for noun in 0..100 {
 	for verb in 0..100 {
@@ -14,11 +10,11 @@ fn main() {
 			match prog[pos] {
 				1 => {
 					let store = prog[pos + 3] as usize;
-					prog[store] = read(&prog, pos + 1) + read(&prog, pos + 2);
+					prog[store] = prog[prog[pos + 1] as usize] + prog[prog[pos + 2] as usize];
 				},
 				2 => {
 					let store = prog[pos + 3] as usize;
-					prog[store] = read(&prog, pos + 1) * read(&prog, pos + 2);
+					prog[store] = prog[prog[pos + 1] as usize] * prog[prog[pos + 2] as usize];
 				},
 				99 => break,
 				_ => panic!("unknown opcode"),
