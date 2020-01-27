@@ -7,15 +7,10 @@ fn main() {
 		prog[1] = noun;
 		prog[2] = verb;
 		loop {
+			let store = prog[pos + 3] as usize;
 			match prog[pos] {
-				1 => {
-					let store = prog[pos + 3] as usize;
-					prog[store] = prog[prog[pos + 1] as usize] + prog[prog[pos + 2] as usize];
-				},
-				2 => {
-					let store = prog[pos + 3] as usize;
-					prog[store] = prog[prog[pos + 1] as usize] * prog[prog[pos + 2] as usize];
-				},
+				1 => prog[store] = prog[prog[pos + 1] as usize] + prog[prog[pos + 2] as usize],
+				2 => prog[store] = prog[prog[pos + 1] as usize] * prog[prog[pos + 2] as usize],
 				99 => break,
 				_ => panic!("unknown opcode"),
 			};
