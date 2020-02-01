@@ -11,6 +11,6 @@ fn main() {
 			fuel = fuel / 3 - 2;
 		}
 	}
-	println!("Part A: {}", sum_a);
-	println!("Part B: {}", sum_b);
+	println!("Part A: {}", sum_a); // 3331523
+	println!("Part B: {}", sum_b); // 4994396
 }
