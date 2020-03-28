@@ -63,14 +63,14 @@ fn next_perm(perm: &mut [i32; 5]) -> bool {
 }
 
 fn main() {
-	let (prog, mut progs, mut phases_a, mut phases_b, mut max_sig_a, mut max_sig_b) = (read_to_string("in7.txt").unwrap().trim_end().split(',').map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>(), [vec![], vec![], vec![], vec![], vec![]], [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], 0, 0);
+	let (prog, mut progs, mut phases_a, mut phases_b, mut max_a, mut max_b) = (read_to_string("in7.txt").unwrap().trim_end().split(',').map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>(), [vec![], vec![], vec![], vec![], vec![]], [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], 0, 0);
 	loop {
 		let mut signal = 0;
 		for amp in 0..5 {
 			let (_, _, next_sig) = run(&mut prog.clone(), 0, false, phases_a[amp], signal);
 			signal = next_sig.unwrap();
 		}
-		max_sig_a = max(max_sig_a, signal);
+		max_a = max(max_a, signal);
 		for i in 0..5 { progs[i] = prog.clone(); }
 		signal = 0;
 		let (mut pos, mut has_in) = ([0; 5], [false; 5]);
@@ -82,11 +82,11 @@ fn main() {
 				has_in[amp] = next_has;
 				signal = next_sig.unwrap();
 			}
-			max_sig_b = max(max_sig_b, signal);
+			max_b = max(max_b, signal);
 		}
 		if !next_perm(&mut phases_a) || !next_perm(&mut phases_b) { break; } // DO GENERATOR / YIELD VERSION, OR, ASYNC / AWAIT VERSION OF DAY 7
 	}
-	println!("Part A: {}", max_sig_a); // 21860
-	println!("Part B: {}", max_sig_b); // 2645740
+	println!("Part A: {}", max_a); // 21860
+	println!("Part B: {}", max_b); // 2645740
 }
 
