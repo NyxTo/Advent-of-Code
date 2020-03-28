@@ -70,7 +70,7 @@ fn next_perm(perm: &mut [i32; 5]) -> bool {
 }
 
 fn main() {
-	let (prog, mut amps, mut phases_a, mut phases_b, mut max_sig_a, mut max_sig_b) = (read_to_string("in7.txt").unwrap().trim_end().split(',').map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>(), vec![], [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], 0, 0);
+	let (prog, mut amps, mut phases_a, mut phases_b, mut max_a, mut max_b) = (read_to_string("in7.txt").unwrap().trim_end().split(',').map(|int| int.parse::<i32>().unwrap()).collect::<Vec<_>>(), vec![], [0, 1, 2, 3, 4], [5, 6, 7, 8, 9], 0, 0);
 	for _ in 0..5 { amps.push(Amp { prog: vec![], pos: 0, has_in: false, phase: 0, sig: 0 }); }
 	loop {
 		for i in 0..5 {
@@ -84,7 +84,7 @@ fn main() {
 			amps[i].sig = signal;
 			signal = amps[i].next().unwrap();
 		}
-		max_sig_a = max(max_sig_a, signal);
+		max_a = max(max_a, signal);
 		for i in 0..5 {
 			amps[i].prog = prog.clone();
 			amps[i].pos = 0;
@@ -99,10 +99,10 @@ fn main() {
 				if next_sig.is_none() { break 'fdbk; }
 				signal = next_sig.unwrap();
 			}
-			max_sig_b = max(max_sig_b, signal);
+			max_b = max(max_b, signal);
 		}
 		if !next_perm(&mut phases_a) || !next_perm(&mut phases_b) { break; }
 	}
-	println!("Part A: {}", max_sig_a); // 21860
-	println!("Part B: {}", max_sig_b); // 2645740
+	println!("Part A: {}", max_a); // 21860
+	println!("Part B: {}", max_b); // 2645740
 }
