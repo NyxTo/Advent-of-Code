@@ -18,7 +18,7 @@ fn main() {
 		}
 	}
 	println!("Part A: {}", num_1x2); // 2016
-	println!("Part B:");
+	println!("Part B:"); // HZCZU
 	for y in 0..6 {							//  #     #   # # # #     # #     # # # #   #     #
 		for x in 0..25 { print!(" {}", match render[y][x] {	//  #     #         #   #     #         #   #     #
 			0 => ' ',					//  # # # #       #     #             #     #     #
