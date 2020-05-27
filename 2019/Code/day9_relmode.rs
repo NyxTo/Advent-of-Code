@@ -78,5 +78,5 @@ fn main() {
 	let mut prog = read_to_string("in9.txt").unwrap().trim_end().split(',').map(|int| int.parse::<i64>().unwrap()).collect::<Vec<_>>();
 	prog.resize(1100, 0);
 	println!("Part A: {}", run(prog.clone(), 1)); // 2662308295
-	println!("Part B: {}", run(prog.clone(), 2)); // insert answer here
+	println!("Part B: {}", run(prog.clone(), 2)); // 63441
 }
