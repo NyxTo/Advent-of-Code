@@ -43,12 +43,9 @@ fn run(mut prog: Vec<i64>, single_in: i64) -> i64 {
 				pos += 2;
 			},
 			4 => {
-				let output = read_param(&prog, base, pos, 1);
+				single_out = read_param(&prog, base, pos, 1);
 				if has_out { panic!("boost keycode not final output"); }
-				else {
-					single_out = output;
-					has_out = true;
-				}
+				else { has_out = true; }
 				pos += 2;
 			},
 			5 => pos = if read_param(&prog, base, pos, 1) != 0 { read_param(&prog, base, pos, 2) as usize } else { pos + 3 },
