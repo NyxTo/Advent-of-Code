@@ -34,7 +34,7 @@ fn run(mut prog: Vec<i64>, single_in: i64) -> i64 {
 				pos += 4;
 			},
 			3 => {
-				let store = if prog[pos] / 100 % 10 == 0 { prog[pos + 1] } else { base + prog[pos + 1] } as usize;
+				let store = write_param(&prog, base, pos, 1);
 				if !has_in {
 					prog[store] = single_in;
 					has_in = true;
