@@ -34,12 +34,9 @@ fn run(mut prog: Vec<i32>, id: i32) -> i32 {
 				pos += 2;
 			},
 			4 => {
-				let output = param(&prog, pos, 1);
+				diag = param(&prog, pos, 1);
 				if has_out { panic!("diagnostic code not final output"); }
-				else if output != 0 {
-					diag = output;
-					has_out = true;
-				}
+				else if diag != 0 { has_out = true; }
 				pos += 2;
 			},
 			5 => pos = if param(&prog, pos, 1) != 0 { param(&prog, pos, 2) as usize } else { pos + 3 },
