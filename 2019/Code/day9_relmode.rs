@@ -12,7 +12,7 @@ fn read_param(prog: &Vec<i64>, base: i64, pos: usize, i: usize) -> i64 {
 fn write_param(prog: &Vec<i64>, base: i64, pos: usize, i: usize) -> usize {
 	match prog[pos] / 10_i64.pow(i as u32 + 1) % 10 {
 		0 => prog[pos + i] as usize,
-		2 => base + prog[pos + i] as usize,
+		2 => (base + prog[pos + i]) as usize,
 		_ => panic!("invalid parameter mode"),
 	}
 }
