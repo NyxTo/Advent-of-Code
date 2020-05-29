@@ -84,7 +84,7 @@ fn main() {
 			}
 			max_b = max(max_b, signal);
 		}
-		if !next_perm(&mut phases_a) || !next_perm(&mut phases_b) { break; } // DO GENERATOR / YIELD VERSION, OR, ASYNC / AWAIT VERSION OF DAY 7
+		if !next_perm(&mut phases_a) || !next_perm(&mut phases_b) { break; }
 	}
 	println!("Part A: {}", max_a); // 21860
 	println!("Part B: {}", max_b); // 2645740
