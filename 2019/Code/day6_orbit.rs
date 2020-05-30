@@ -26,7 +26,7 @@ fn main() {
 	let mut directs: HashMap<String, Vec<String>> = HashMap::new();
 	for line in BufReader::new(File::open("in6.txt").unwrap()).lines().map(|line| line.unwrap()) {
 		let sep = line.find(')').unwrap();
-		let (ctr, arnd) = (line[0..sep].to_string(), line[sep+1 ..].to_string());
+		let (ctr, arnd) = (line[0..sep].to_string(), line[sep + 1 ..].to_string());
 		match directs.get_mut(&ctr) {
 			Some(orbits) => orbits.push(arnd),
 			None => { directs.insert(ctr, vec![arnd]); },
