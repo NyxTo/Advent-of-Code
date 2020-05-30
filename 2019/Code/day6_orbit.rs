@@ -23,7 +23,7 @@ fn dfs(directs: &HashMap<String, Vec<String>>, ctr: &str, dist_com: i32) -> (i32
 }
 
 fn main() {
-	let mut directs: HashMap<String, Vec<String>> = HashMap::new();
+	let mut directs: HashMap<_, Vec<String>> = HashMap::new();
 	for line in BufReader::new(File::open("in6.txt").unwrap()).lines().map(|line| line.unwrap()) {
 		let sep = line.find(')').unwrap();
 		let (ctr, arnd) = (line[0..sep].to_string(), line[sep + 1 ..].to_string());
